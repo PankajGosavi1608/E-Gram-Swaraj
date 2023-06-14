@@ -26,7 +26,12 @@ public class PanchayatProfileController {
 	@Autowired
 	private PanchayatProfileService panchayatProfileService;
 
-	// create
+	/**
+	 * @author Pankaj Gosavi
+	 * @apiNote This Api is to create Profile
+	 * @param panchayatProfileDto
+	 * @return
+	 */
 	@PostMapping("/")
 	public ResponseEntity<PanchayatProfileDto> createProfile(
 			@Valid @RequestBody PanchayatProfileDto panchayatProfileDto) {
@@ -37,7 +42,13 @@ public class PanchayatProfileController {
 
 	}
 
-	// Update
+	/**
+	 * @author Pankaj Gosavi
+	 * @apiNote This Api is to update Profile
+	 * @param panchayatProfileDto
+	 * @param id
+	 * @return
+	 */
 	@PutMapping("/{id}")
 	public ResponseEntity<PanchayatProfileDto> updateProfile(@RequestBody PanchayatProfileDto panchayatProfileDto,
 			@PathVariable Long id) {
@@ -48,7 +59,12 @@ public class PanchayatProfileController {
 
 	}
 
-	// Delete
+	/**
+	 * @author Pankaj Gosavi
+	 * @apiNote This Api is to delete Profile
+	 * @param id
+	 * @return
+	 */
 	@DeleteMapping("/{id}")
 	public ResponseEntity<ApiResponse> deleteProfile(@PathVariable("id") Long id) {
 
@@ -57,7 +73,11 @@ public class PanchayatProfileController {
 
 	}
 
-	// Get All Profile
+	/**
+	 * @author Pankaj Gosavi
+	 * @apiNote This Api is to Get All Profiles
+	 * @return
+	 */
 	@GetMapping("/")
 	public ResponseEntity<List<PanchayatProfileDto>> getAllProfiles() {
 
@@ -65,7 +85,12 @@ public class PanchayatProfileController {
 
 	}
 
-	// get single profile
+	/**
+	 * @author Pankaj Gosavi
+	 * @apiNote This Api is to Get Profile By Id
+	 * @param id
+	 * @return
+	 */
 
 	@GetMapping("/{id}")
 	public ResponseEntity<PanchayatProfileDto> getProfileById(@PathVariable Long id) {
@@ -73,8 +98,14 @@ public class PanchayatProfileController {
 		return ResponseEntity.ok(this.panchayatProfileService.getProfileById(id));
 
 	}
+	
 
-	// get by email
+	/**
+	 * @author Pankaj Gosavi
+	 * @apiNote This Api is to Get profile by Email
+	 * @param email
+	 * @return
+	 */
 	@GetMapping("/email/{email}")
 	public ResponseEntity<PanchayatProfileDto> getProfileByEmail(@PathVariable String email) {
 
@@ -82,14 +113,24 @@ public class PanchayatProfileController {
 
 	}
 
-	// get by village name
+	/**
+	 * @author Pankaj Gosavi
+	 * @apiNote This Api is to get Profile by village name
+	 * @param village
+	 * @return
+	 */
 	@GetMapping("/village/{village}")
 	public ResponseEntity<PanchayatProfileDto> getProfileByVillage(@PathVariable String village) {
 
 		return ResponseEntity.ok(this.panchayatProfileService.getProfileByVillage(village));
 	}
 
-	// get by tahsil name
+	/**
+	 * @author Pankaj Gosavi
+	 * @apiNote This Api is to get profile by tahsil
+	 * @param tahsil
+	 * @return
+	 */
 
 	@GetMapping("/tahsil/{tahsil}")
 	public ResponseEntity<PanchayatProfileDto> getProfileByTahsil(@PathVariable String tahsil) {
@@ -98,7 +139,12 @@ public class PanchayatProfileController {
 
 	}
 
-	// get by district name
+	/**
+	 * @author Pankaj Gosavi
+	 * @apiNote This Api is to get profile by district
+	 * @param district
+	 * @return
+	 */
 	@GetMapping("/district/{district}")
 	public ResponseEntity<PanchayatProfileDto> getProfileByDistrict(@PathVariable String district) {
 
@@ -106,7 +152,12 @@ public class PanchayatProfileController {
 
 	}
 
-	// get by state
+	/**
+	 * @author Pankaj Gosavi
+	 * @apiNote This Api is to get profile by state
+	 * @param state
+	 * @return
+	 */
 
 	@GetMapping("/state/{State}")
 	public ResponseEntity<PanchayatProfileDto> getProfileByState(@PathVariable String state) {
@@ -115,7 +166,12 @@ public class PanchayatProfileController {
 
 	}
 
-	// get by electedyear
+	/**
+	 * @author Pankaj Gosavi
+	 * @apiNote This Api is to get profiles by electedYear
+	 * @param electedYear
+	 * @return
+	 */
 
 	@GetMapping("/electedYear/{electedYear}")
 	public ResponseEntity<PanchayatProfileDto> getProfileByElectedYear(@PathVariable Long electedYear) {
