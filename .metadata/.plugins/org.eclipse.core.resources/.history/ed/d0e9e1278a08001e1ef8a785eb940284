@@ -1,0 +1,5 @@
+package com.egramswaraj.repository;
+
+public interface PanchayatProfileRepository {
+
+}

@@ -1,0 +1,15 @@
+server.port=8787
+
+# Database Configuration
+spring.datasource.url=jdbc:mysql://localhost:3306/e_gram_swaraj
+spring.datasource.username=root
+spring.datasource.password=root
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# Hibernate Configuration
+spring.jpa.database-platform=org.hibernate.dialect.MySQL8Dialect
+spring.jpa.hibernate.ddl-auto=update
+
+# Spring Boot Configuration
+spring.main.allow-bean-definition-overriding=true
+

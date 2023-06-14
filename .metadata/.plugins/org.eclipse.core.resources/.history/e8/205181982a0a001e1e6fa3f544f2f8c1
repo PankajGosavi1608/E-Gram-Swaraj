@@ -1,0 +1,51 @@
+package com.egramswaraj.controller;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.egramswaraj.dto.PanchayatProfileDto;
+import com.egramswaraj.service.PanchayatProfileService;
+
+@RestController
+@RequestMapping("/eGram/")
+public class PanchayatProfileController {
+	
+	@Autowired
+	private PanchayatProfileService panchayatProfileService;
+	
+	
+	// create 
+	
+	public ResponseEntity<PanchayatProfileDto> createProfile(@Valid @RequestBody PanchayatProfileDto panchayatProfileDto){
+		
+		PanchayatProfileDto createProfileDto = this.panchayatProfileService.createProfile(panchayatProfileDto);
+		
+		return new ResponseEntity<>(createProfileDto,HttpStatus.CREATED);
+		
+	}
+	
+	//Update
+	
+	
+	//Delete
+	
+	
+	//Get All
+	
+	
+	//get single profile
+	
+	/**/
+	
+	
+	
+	
+	
+
+}

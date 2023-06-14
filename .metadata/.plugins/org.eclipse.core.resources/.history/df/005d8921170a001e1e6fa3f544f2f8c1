@@ -1,0 +1,32 @@
+package com.egramswaraj.entity;
+
+import javax.persistence.Entity;
+
+@Entity
+public class PanchayatProfile {
+	
+	private Long id;
+	
+	private String sarpanchName;
+	
+	private String villageName;
+	
+	private String tahsilName;
+	
+	private String districtName;
+	
+	private String state;
+	
+	private Long electedYear;
+	
+	private String email;
+	
+	
+	
+	
+	
+	
+	
+	
+
+}

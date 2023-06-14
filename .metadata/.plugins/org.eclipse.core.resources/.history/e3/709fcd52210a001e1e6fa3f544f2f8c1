@@ -1,0 +1,96 @@
+package com.egramswaraj.service.Impl;
+
+import java.util.List;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.egramswaraj.dto.PanchayatProfileDto;
+import com.egramswaraj.entity.PanchayatProfile;
+import com.egramswaraj.repository.PanchayatProfileRepository;
+import com.egramswaraj.service.PanchayatProfileService;
+
+import lombok.extern.slf4j.Slf4j;
+
+
+@Service
+@Slf4j
+public class PanchayatProfileServiceImpl implements PanchayatProfileService{
+	
+	@Autowired
+	private PanchayatProfileRepository panchayatProfileRepository;
+	@Autowired
+	private ModelMapper modelMapper;
+
+	@Override
+	public List<PanchayatProfileDto> getAllProfiles() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PanchayatProfileDto getProfileById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PanchayatProfileDto getProfileByElectedYear(Long electedYear) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PanchayatProfileDto createProfile(PanchayatProfileDto panchayatProfileDto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PanchayatProfileDto updateProfile(PanchayatProfileDto panchayatProfileDto) {
+		
+		PanchayatProfile panchayatProfile=panchayatProfileRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User Profile not found with this id",id));
+		
+		// Map the updated data from the UserDto to the User entity
+		
+		modelMapper.map(panchayatProfileDto, panchayatProfile);
+		
+		PanchayatProfile updatedPanchayatProfile = panchayatProfileRepository.save(panchayatProfile);
+		
+		PanchayatProfileDto updatedPanchayatProfileDto = modelMapper.map(updatedPanchayatProfile, PanchayatProfileDto.class);
+		
+		return null;
+	}
+
+	@Override
+	public void deleteProfile(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public PanchayatProfileDto getProfileByEmail(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PanchayatProfileDto getProfileByVillage(String village) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PanchayatProfileDto getProfileByTahsil(String tahsil) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PanchayatProfileDto getProfileByDistrict(String district) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,5 @@
+package com.egramswaraj.entity;
+
+public class PanchayatProfileEntity {
+
+}

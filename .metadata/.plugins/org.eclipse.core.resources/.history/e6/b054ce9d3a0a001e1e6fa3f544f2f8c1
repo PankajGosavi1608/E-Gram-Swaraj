@@ -1,0 +1,9 @@
+package com.egramswaraj.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.egramswaraj.entity.PanchayatProfile;
+
+public interface PanchayatProfileRepository extends JpaRepository<PanchayatProfile, String>{
+
+}

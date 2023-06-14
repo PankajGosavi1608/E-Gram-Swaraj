@@ -1,0 +1,5 @@
+package com.egramswaraj.dto;
+
+public class PanchayatProfileDto {
+
+}

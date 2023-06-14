@@ -1,0 +1,5 @@
+package com.egramswaraj.exception;
+
+public class ApiException {
+
+}

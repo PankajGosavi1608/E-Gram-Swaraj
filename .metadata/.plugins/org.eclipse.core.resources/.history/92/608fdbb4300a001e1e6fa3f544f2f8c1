@@ -1,0 +1,140 @@
+package com.egramswaraj.service.Impl;
+
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.egramswaraj.dto.PanchayatProfileDto;
+import com.egramswaraj.entity.PanchayatProfile;
+import com.egramswaraj.repository.PanchayatProfileRepository;
+import com.egramswaraj.service.PanchayatProfileService;
+
+import lombok.extern.slf4j.Slf4j;
+
+
+@Service
+@Slf4j
+public class PanchayatProfileServiceImpl implements PanchayatProfileService{
+	
+	@Autowired
+	private PanchayatProfileRepository panchayatProfileRepository;
+	@Autowired
+	private ModelMapper modelMapper;
+
+	@Override
+	public List<PanchayatProfileDto> getAllProfiles() {
+
+		List<PanchayatProfile> panchayatProfiles= panchayatProfileRepository.findAll();
+		List<PanchayatProfileDto> panchayatProfileDtos =panchayatProfiles.stream().map(PanchayatProfile-> this.profileToDto(PanchayatProfile)).collect(Collectors.toList());
+		
+		/*		List<User> users = this.userrepo.findAll();
+		List<UserDto> userDtos = users.stream().map(user -> this.userToDto(user)).collect(Collectors.toList());
+
+		return userDtos;*/
+		
+		
+		return null;
+	}
+
+	@Override
+	public PanchayatProfileDto getProfileById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PanchayatProfileDto getProfileByElectedYear(Long electedYear) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PanchayatProfileDto createProfile(PanchayatProfileDto panchayatProfileDto) {
+
+		
+		return null;
+	}
+
+	@Override
+	public PanchayatProfileDto updateProfile(PanchayatProfileDto panchayatProfileDto) {
+		
+		PanchayatProfile panchayatProfile=panchayatProfileRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User Profile not found with this id",id));
+		
+		// Map the updated data from the UserDto to the User entity
+		
+		modelMapper.map(panchayatProfileDto, panchayatProfile);
+		
+		PanchayatProfile updatedPanchayatProfile = panchayatProfileRepository.save(panchayatProfile);
+		
+		PanchayatProfileDto updatedPanchayatProfileDto = modelMapper.map(updatedPanchayatProfile, PanchayatProfileDto.class);
+		
+		return updatedPanchayatProfileDto;
+	}
+
+	@Override
+	public void deleteProfile(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public PanchayatProfileDto getProfileByEmail(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PanchayatProfileDto getProfileByVillage(String village) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PanchayatProfileDto getProfileByTahsil(String tahsil) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PanchayatProfileDto getProfileByDistrict(String district) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	private PanchayatProfile dtoToProfile( PanchayatProfileDto panchayatProfileDto) {
+		//log.info("Starting request from dto to Profile with ProfileDto:{}",panchayatProfileDto);
+		PanchayatProfile panchayatProfile =this.modelMapper.map(panchayatProfileDto,PanchayatProfile.class);
+		
+		//log.info("Completed request from dto to Profile with ProfileDto:{}",panchayatProfileDto);
+		return panchayatProfile;
+		
+		/*model mappper saved coding below just above line is enough
+		User user = new User();
+	    user.setId(userDto.getId());        //for using model mapper we cmnt this
+		user.setName(userDto.getName());
+		user.setEmail(userDto.getEmail());
+		user.setAbout(userDto.getAbout());
+		user.setPassword(userDto.getPassword());*/
+		
+		}
+
+	public PanchayatProfileDto profileToDto(PanchayatProfile panchayatProfile) {
+
+		//log.info("Starting request from Profile to Profiledto with panchayatProfile:{}", panchayatProfile);
+		PanchayatProfileDto panchayatProfileDto = this.modelMapper.map(panchayatProfile, PanchayatProfileDto.class);
+
+		/*
+		 * UserDto userDto=new UserDto(); userDto.setId(user.getId());
+		 * userDto.setName(user.getName()); userDto.setEmail(user.getEmail());
+		 * userDto.setAbout(user.getAbout()); userDto.setPassword(user.getPassword());
+		 */
+		//log.info("Completed request from Profile to Profiledto with panchayatProfile:{}", panchayatProfile);
+		return userDto;
+
+	}
+
+}
